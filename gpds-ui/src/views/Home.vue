@@ -4,6 +4,7 @@
     <h1>Home</h1>
     <h1>Cambio de prueba xd</h1>
     <h1>Cambio de prueba 2.0</h1>
+    <h1>Cambio de prueba 3.0</h1>
     <p>Bienvenido a la página de inicio.</p>
   </div>
 </template>
