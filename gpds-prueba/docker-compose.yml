@@ -1,0 +1,42 @@
+services:
+  mysql-db:
+    image: mysql:8.0
+    container_name: mysql-db
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: i20213tn102
+      MYSQL_USER: boletos
+      MYSQL_PASSWORD: boletos2024
+      MYSQL_DATABASE: boletos_db
+    networks:
+      - examen
+      ports:
+      - "3306:3306"
+
+  liga:
+    build:
+      context: ./liga
+      dockerfile: Dockerfile
+    container_name: liga
+    ports:
+      - "80:80"
+
+    networks:
+      - examen
+
+  boletos:
+    container_name: boletos
+    image: nginx
+    ports:
+      - "81:80"
+    volumes:
+      - ./boletos:/usr/share/nginx/html
+    networks:
+      - examen
+
+
+
+networks:
+  examen:
+    driver: bridge
